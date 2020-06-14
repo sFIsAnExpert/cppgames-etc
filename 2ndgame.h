@@ -1,0 +1,154 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <windows.h>
+#include <time.h>
+#include <stdio.h>
+#include <minwindef.h>
+#include <TlHelp32.h>
+using namespace std;
+
+char A, B, C;
+int e, g, p, o;
+int a, b, c, f, z, k, w;
+std::vector<int> intPointers = { a,b,c };
+HANDLE hProc = GetCurrentProcess();
+uintptr_t base;
+int basevalue;
+int final = z + k + w;
+class secondary {
+public:
+	bool istrue = true;
+	bool isflase = false;
+};
+
+class features {
+public:
+	BOOL isTrue = 1;
+	BOOL isFalse = 0;
+};
+
+uintptr_t GetMyValue(HANDLE hProc, uintptr_t ptr, std::vector<int> offsets)
+{
+	uintptr_t addr = ptr;
+
+	for (int i = 0; i < offsets.size(); ++i)
+	{
+		ReadProcessMemory(hProc, (BYTE*)addr, &addr, sizeof(addr), 0);
+		addr += offsets[i];
+		
+	}
+	return addr;
+}
+uintptr_t finalbase = GetMyValue(hProc, base, intPointers);
+
+void end() {
+	cout << "Goodbye!" << endl;
+}
+
+void failed() {
+	cout << "Press F12 to exit\n" << endl;
+
+	for (int g = 0; g < 1000; ++g) {
+		if (GetAsyncKeyState(VK_F12)) {
+			end();
+		}
+		Sleep(100);
+	}
+}
+
+void isfunction() {
+
+	cout << "Set values for ints a,b,c\n" << endl;
+
+	cout << "What value for a?\n" << endl;
+	cin >> z;
+
+	cout << "b?\n" << endl;
+	cin >> k;
+
+	cout << "c?\n" << endl;
+	cin >> w;
+
+	cout << "The vector will now hold the values: " << z << ", " << k << ", and " << w << "." << endl;
+
+
+	uintptr_t completefinal = finalbase + z + k + w;
+	cout << "In total the vector now holds: " << completefinal << endl;
+	cout << "What do you want to change the whole value too? Number cant be a negative\n" << endl;
+
+	cin >> f;
+
+	for (int p = 0; p < 1; ++p) {
+		if (f <= 0.0) {
+			cout << "Invalid number\n" << endl;
+			failed();
+		}
+		else
+			break;
+	}
+
+	cout << "Changing values, " << completefinal << ". To the value of: " << f << endl;
+
+	completefinal = f;
+	uintptr_t lastcompletefinal;
+
+	cout << "The value of the vector is now: " << completefinal << endl;
+	cout << "Do you want to multiply the value? Or Write a new vector for comparison?\n" << endl;
+	cout << "[1]To multiply [2]Write new vector\n" << endl;
+	cin >> g;
+
+	for (int w = 0; w < 1; ++w) {
+		if (g > 2 | g < 0) {
+			cout << "Invalid value\n" << endl;
+			failed();
+		}
+		else
+			break;
+	}
+
+	for (int kl = 0; kl < 1; ++kl) {
+		if (g == 1) {
+			cout << "What do you want to multiply the value by?\n" << endl;
+			cin >> p;
+			lastcompletefinal = completefinal * p;
+			cout << "The value is now: " << lastcompletefinal << endl;
+		}
+
+		if (g == 2) {
+			cout << "What do you want to write the vector to now?\n" << endl;
+			cin >> o;
+			completefinal = o;
+			cout << "The value is now: " << completefinal << endl;
+		}
+		break;
+	}
+	cout << "Thank you for using this program\n"
+		"Press F12 to exit\n" << endl;
+
+	for (int kobe = 0; kobe < 1000; ++kobe) {
+		if (GetAsyncKeyState(VK_F12)) {
+			end();
+		}
+		Sleep(100);
+	}
+}
+
+void nextgame() {
+	cout << "Welcome to the new game...\n"
+		"In this game it will discuss BOOL function types and something im gonna do bla bla\n"
+		"Enter a number from 1 - 15\n" << endl;
+	cin >> e;
+	for (int i = 0; i < 10; ++i) {
+		if (e > 15 | e <= 0) {
+			cout << "Invalid value" << endl;
+			failed();
+		}
+		
+		if (e <= 15) {
+			cout << "You have chosen: " << e << endl;
+			cout << "Now the next step is to determine bool functions are working\n" << endl;
+			isfunction();
+		}
+	}
+}
