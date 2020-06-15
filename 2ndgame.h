@@ -1,17 +1,11 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <windows.h>
-#include <time.h>
-#include <stdio.h>
-#include <minwindef.h>
-#include <TlHelp32.h>
-#include <mutex>
+#include "encryptcmds.h"
 using namespace std;
 
 char A, B, C;
 int e, g, p, o, lw;
 int a, b, c, f, z, k, w;
+int k1, k2, k3, k4, k5, k6;
+int f1, f2, f3, f4, f5, f6;
 std::vector<int> intPointers = { a,b,c };
 HANDLE hProc = GetCurrentProcess();
 uintptr_t base;
@@ -47,10 +41,90 @@ void failed() {
 	}
 }
 
+void newentrance() {
+	cout << "Success!\n" << endl;
+	cout << "Welcome to the new entrance\n" << endl;
+	cout << "Attemp to escape\n" << endl;
+	BOOL boolKey = FALSE;
+	char x[50];
+	int input1;
 
+
+	strcpy_s(x, "8wY8n@d6kwR7nKlq13*3kIe8: is the next key");
+	puts(x);
+	memset(x, '?', 25);
+
+	cout << "The key is a mixed value for a total size of 25\n" << endl;
+	cout << "Press 1 to generate a random key" << endl;
+	
+	cin >> input1;
+	while (1) {
+		if (input1 < 1 && input1 > 1) {
+			cout << "Incorrect value\n" << endl;
+		}
+		else
+			break;
+	}
+	
+	unsigned long l;
+	srand((unsigned)time(NULL));
+
+	for (l = 0; l < 100500; ++l)
+	{
+		f1 = k1 = rand() % 6 + 1;
+		f2 = k2 = rand() % 6 + 1;
+		f3 = k3 = rand() % 6 + 1;
+		f4 = k4 = rand() % 6 + 1;
+		f5 = k5 = rand() % 6 + 1;
+		f6 = k6 = rand() % 6 + 1;
+	}
+	
+	cout << "You got the key placement #: " << f1 << f2 << f3 << f4 << f5 << f6 << endl;
+	encrypt();
+}
 
 void entrance() {
 	cout << "You made it into the entrance!\n" << endl;
+	char x[50];
+	char input[10];
+	char password[10] = "Kymberlee";
+	
+
+	BOOL stringLock = FALSE;
+	strcpy_s(x, "Kymberlee: is the next next doors password");
+
+	memset(x, '?', 9);
+	puts(x);
+	cout << "To decrypt the string, you must activate the bool\n" << endl;
+	
+	while (1) {
+		if (GetAsyncKeyState(VK_F12)) {
+			stringLock = TRUE;
+			break;
+		}
+		Sleep(100);
+	}
+
+	if (stringLock == TRUE) {
+		strcpy_s(x, "Kymberlee: is the next next doors password");
+		cout << "BOOL Activated, Your Password: \n" << endl;
+		puts(x);
+	}
+
+	cout << "Enter password\n" << endl;
+	cin >> input;
+	cout << "You have entered: " << input << ".\n" << endl;
+	int result = strcmp(input, password);
+	int i = 0;
+	while (1) {
+		++i;
+		if (result != 0) {
+			cout << "Incorrect!" << endl;
+		}
+		else
+			newentrance();
+		break;
+	}
 	
 }
 
