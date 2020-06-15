@@ -90,13 +90,10 @@ int main() {
 			cout << "Not an option\n" << endl;
 
 		if (M == 'B' | M == 'b') {
-			boolcheck();
+			newentrance();
 		}
 		else
 			cout << "Not an option\n" << endl;
 	}
 	
 }
-
-
-
