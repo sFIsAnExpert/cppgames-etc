@@ -88,7 +88,12 @@ int main() {
 		}
 		else
 			cout << "Not an option\n" << endl;
-		
+
+		if (M == 'B' | M == 'b') {
+			boolcheck();
+		}
+		else
+			cout << "Not an option\n" << endl;
 	}
 	
 }
