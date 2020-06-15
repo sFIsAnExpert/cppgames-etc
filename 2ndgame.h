@@ -6,27 +6,17 @@
 #include <stdio.h>
 #include <minwindef.h>
 #include <TlHelp32.h>
+#include <mutex>
 using namespace std;
 
 char A, B, C;
-int e, g, p, o;
+int e, g, p, o, lw;
 int a, b, c, f, z, k, w;
 std::vector<int> intPointers = { a,b,c };
 HANDLE hProc = GetCurrentProcess();
 uintptr_t base;
 int basevalue;
 int final = z + k + w;
-class secondary {
-public:
-	bool istrue = true;
-	bool isflase = false;
-};
-
-class features {
-public:
-	BOOL isTrue = 1;
-	BOOL isFalse = 0;
-};
 
 uintptr_t GetMyValue(HANDLE hProc, uintptr_t ptr, std::vector<int> offsets)
 {
@@ -36,7 +26,7 @@ uintptr_t GetMyValue(HANDLE hProc, uintptr_t ptr, std::vector<int> offsets)
 	{
 		ReadProcessMemory(hProc, (BYTE*)addr, &addr, sizeof(addr), 0);
 		addr += offsets[i];
-		
+
 	}
 	return addr;
 }
@@ -55,6 +45,36 @@ void failed() {
 		}
 		Sleep(100);
 	}
+}
+
+
+
+void entrance() {
+	cout << "You made it into the entrance!\n" << endl;
+	
+}
+
+void boolcheck() {
+	int local;
+	int code = 123117;
+	BOOL key = FALSE;
+	cout << "What is the secret code?\n" << endl;
+	cin >> local;
+	
+	if (local != code) {
+		cout << "This is the wrong code!\n" << endl;
+		cout << "Try again\n" << endl;
+		boolcheck();
+	}
+
+	if (local == code) {
+		key = TRUE;
+	}
+	
+	if (key == TRUE) {
+		entrance();
+	}
+
 }
 
 void isfunction() {
@@ -113,25 +133,19 @@ void isfunction() {
 			cin >> p;
 			lastcompletefinal = completefinal * p;
 			cout << "The value is now: " << lastcompletefinal << endl;
-		}
+			break;
+		}  
 
 		if (g == 2) {
 			cout << "What do you want to write the vector to now?\n" << endl;
 			cin >> o;
 			completefinal = o;
 			cout << "The value is now: " << completefinal << endl;
+			break;
 		}
-		break;
 	}
-	cout << "Thank you for using this program\n"
-		"Press F12 to exit\n" << endl;
 
-	for (int kobe = 0; kobe < 1000; ++kobe) {
-		if (GetAsyncKeyState(VK_F12)) {
-			end();
-		}
-		Sleep(100);
-	}
+	boolcheck();
 }
 
 void nextgame() {
@@ -139,7 +153,7 @@ void nextgame() {
 		"In this game it will discuss BOOL function types and something im gonna do bla bla\n"
 		"Enter a number from 1 - 15\n" << endl;
 	cin >> e;
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 1; ++i) {
 		if (e > 15 | e <= 0) {
 			cout << "Invalid value" << endl;
 			failed();
@@ -147,7 +161,7 @@ void nextgame() {
 		
 		if (e <= 15) {
 			cout << "You have chosen: " << e << endl;
-			cout << "Now the next step is to determine bool functions are working\n" << endl;
+			cout << "Now the next step is to see if the code is working\n" << endl;
 			isfunction();
 		}
 	}
