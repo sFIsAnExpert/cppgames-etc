@@ -51,10 +51,10 @@ void newentrance() {
 
 
 	strcpy_s(x, "8wY8n@d6kwR7nKlq13*3kIe8: is the next key");
-	puts(x);
 	memset(x, '?', 25);
+	puts(x);
 
-	cout << "The key is a mixed value for a total size of 25\n" << endl;
+	cout << "The key is a mixed value for a total size of MAX_INT\n" << endl;
 	cout << "Press 1 to generate a random key" << endl;
 	
 	cin >> input1;
