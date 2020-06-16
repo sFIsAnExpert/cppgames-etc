@@ -90,7 +90,7 @@ int main() {
 			cout << "Not an option\n" << endl;
 
 		if (M == 'B' | M == 'b') {
-			newentrance();
+			thirdentrance();
 		}
 		else
 			cout << "Not an option\n" << endl;
